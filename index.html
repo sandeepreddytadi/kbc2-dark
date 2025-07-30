@@ -474,18 +474,28 @@ window.addEventListener('keydown', (e) => {
       introOver = false;
       initializeGameForQuestion();
     } else if (waitingForNext) {
-      waitingForNext = false;
-      currentIndex++;
-      questionEl.textContent = "Loading...";
-      optionsEl.innerHTML = "";
-      timerEl.textContent = "";
-      if (window.dollController) {
-        window.dollController.playAction1();
+      if (currentIndex + 1 >= questions.length) {
+        // All questions completed
+        quizActive = false;
+        waitingForNext = false;
+        questionEl.textContent = "Successfully Completed Quiz. Thank you for Participating!";
+        optionsEl.innerHTML = "";
+        timerEl.textContent = "";
+      } else {
+        waitingForNext = false;
+        currentIndex++;
+        questionEl.textContent = "Loading...";
+        optionsEl.innerHTML = "";
+        timerEl.textContent = "";
+        if (window.dollController) {
+          window.dollController.playAction1();
+        }
+        waitingForDoll = true;
       }
-      waitingForDoll = true;
     }
   }
 });
+
 
 
     // Detect tap/click outside canvas for mobile
