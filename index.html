@@ -496,6 +496,16 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+    window.addEventListener('touchend', (e) => {
+  const tappedElement = e.target;
+
+  // Start quiz on tap of canvas (only if introOver is true)
+  if (introOver && tappedElement.tagName.toLowerCase() === 'canvas') {
+    introOver = false;
+    initializeGameForQuestion();
+    return;
+  }
+
      // Advance to next question on tap outside canvas
   if (waitingForNext && tappedElement.tagName.toLowerCase() !== 'canvas') {
     if (currentIndex + 1 >= questions.length) {
