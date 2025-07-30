@@ -438,7 +438,7 @@ scene.add(hemiLight);
     // Define a function to initialize game state and start doll animation for the first question
     const initializeGameForQuestion = () => {
         // Reset game state for a new round of questions
-        questions = [...allQuestions].sort(() => 0.5 - Math.random());
+        questions = [...allQuestions];
         currentIndex = 0;
         quizActive = true;
         waitingForDoll = false; // Reset this state
