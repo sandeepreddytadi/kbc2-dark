@@ -275,9 +275,9 @@ if (window.soundDollIdleLoop) {
     function init() {
       clock = new THREE.Clock();
       scene = new THREE.Scene();
-      // Set background color
-scene.background = new THREE.Color(0x000000);
-
+      // Set background color 
+      scene.background = new THREE.Color(0x000000);
+      
       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
       camera.position.set(0, 5, 20);
 
@@ -492,6 +492,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+
     window.addEventListener('touchend', (e) => {
   const tappedElement = e.target;
 
@@ -502,7 +503,7 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-     // Advance to next question on tap outside canvas
+  // Advance to next question on tap outside canvas
   if (waitingForNext && tappedElement.tagName.toLowerCase() !== 'canvas') {
     if (currentIndex + 1 >= questions.length) {
       // All questions completed
@@ -524,6 +525,8 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+
 
     // Removed updateProgress() function as progress bar is removed
 
@@ -583,6 +586,7 @@ window.addEventListener('keydown', (e) => {
       }
       // Set flag to wait for 'N' key
       waitingForNext = true;
+    }
 
     function updateTimer() {
       timerEl.textContent = `⏱️ ${timeLeft}s`;
