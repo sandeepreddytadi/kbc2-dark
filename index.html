@@ -570,6 +570,17 @@ window.addEventListener('touchend', (e) => {
       }
       // Set flag to wait for 'N' key
       waitingForNext = true;
+
+      // ✅ Check if this was the last question
+  if (currentIndex >= questions.length - 1) {
+    quizActive = false;
+    waitingForNext = false;
+    setTimeout(() => {
+      questionEl.textContent = "Successfully Completed Quiz. Thank you for Participating!";
+      optionsEl.innerHTML = "";
+      timerEl.textContent = "";
+    }, 2000);
+  }
     }
 
     function updateTimer() {
