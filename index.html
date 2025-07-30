@@ -277,10 +277,6 @@ if (window.soundDollIdleLoop) {
       scene = new THREE.Scene();
       // Set background color
 scene.background = new THREE.Color(0x000000);
-      const textureLoader = new THREE.TextureLoader();
-textureLoader.load('', function(texture) {
-  scene.background = texture;
-});
 
       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
       camera.position.set(0, 5, 20);
