@@ -275,6 +275,8 @@ if (window.soundDollIdleLoop) {
     function init() {
       clock = new THREE.Clock();
       scene = new THREE.Scene();
+      // Set background color
+scene.background = new THREE.Color(0x000000);
       const textureLoader = new THREE.TextureLoader();
 textureLoader.load('background.jpg', function(texture) {
   scene.background = texture;
