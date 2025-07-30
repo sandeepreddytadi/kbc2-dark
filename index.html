@@ -496,31 +496,28 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-
-
-    // Detect tap/click outside canvas for mobile
-window.addEventListener('touchend', (e) => {
-  const tappedElement = e.target;
-
-  if (introOver && tappedElement.tagName.toLowerCase() === 'canvas') {
-    introOver = false;
-    initializeGameForQuestion();
-    return;
-  }
-
+     // Advance to next question on tap outside canvas
   if (waitingForNext && tappedElement.tagName.toLowerCase() !== 'canvas') {
-    waitingForNext = false;
-    currentIndex++;
-    questionEl.textContent = "Loading...";
-    optionsEl.innerHTML = "";
-    timerEl.textContent = "";
-    if (window.dollController) {
-      window.dollController.playAction1();
+    if (currentIndex + 1 >= questions.length) {
+      // All questions completed
+      quizActive = false;
+      waitingForNext = false;
+      questionEl.textContent = "Successfully Completed Quiz. Thank you for Participating!";
+      optionsEl.innerHTML = "";
+      timerEl.textContent = "";
+    } else {
+      waitingForNext = false;
+      currentIndex++;
+      questionEl.textContent = "Loading...";
+      optionsEl.innerHTML = "";
+      timerEl.textContent = "";
+      if (window.dollController) {
+        window.dollController.playAction1();
+      }
+      waitingForDoll = true;
     }
-    waitingForDoll = true;
   }
 });
-
 
     // Removed updateProgress() function as progress bar is removed
 
